@@ -5,16 +5,19 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(windowWidth, windowHeight, WEBGL);
+    //use windowWidth and windowHeight later
+    createCanvas(200, 200, WEBGL);
 
 }
 
-audioPlayer = document.querySelector('#song')
+//audioPlayer = document.querySelector('#song')
 
 
 function draw() {
     shader(firstShader)
     rect(0,0,width,height)
+
+    /*
     const bpm = 138
     const demoTime = getTime() * bpm / 60
 
@@ -25,4 +28,5 @@ function draw() {
     orbitControl()
 
     box()
+    */
 }
