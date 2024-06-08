@@ -1,6 +1,5 @@
 
 let trees = [];
-let trees2 = [];
 
 let speed = 2;
 let angle = 0;
@@ -11,8 +10,7 @@ function setup() {
   for (let i = 0; i < 100; i++) {
     let x = random(-2000, 2000);
     let z = random(-5000, 0);
-    trees.push(createVector(x, 0, z));
-    trees2.push(new Tree( x, 0, z))
+    trees.push(new Tree( x, 0, z))
   }
 }
 
@@ -38,23 +36,7 @@ function draw() {
   // Set camera position and target
   camera(camX, 0, camZ, 0, 0, camZ - 500, 0, 1, 0);
 
-  // Draw trees
-  // for (let tree of trees) {
-  //   push();
-  //   translate(tree.x, tree.y, tree.z);
-  //   drawTree();
-  //   pop();
-  // }
-
-  for (const tree of trees2) {
+  for (const tree of trees) {
     tree.draw()
   }
-}
-
-function drawTree() {
-  fill(139, 69, 19); // Brown color for the trunk
-  cylinder(20, 150);
-  translate(0, -75, 0);
-  fill(34, 139, 34); // Green color for the leaves
-  sphere(50);
 }
