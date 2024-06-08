@@ -1,59 +1,79 @@
 audioPlayer = document.querySelector('#song')
 
-function setup() {
-    const app = createCanvas(1920, 1080)
-    app.canvas.style = '' // Remove default scaling
-    app.parent(document.body)
+//Global variables go where?
+let trees = []
 
-    background(0)
-    noLoop()
-}
+//Propably not optimal way to do this but:
+let lastTreeSpawned = 0
+
+
+//Perpective needs some variables
+const horizon = 400 //The pizel value 
 
 function draw() {
     const bpm = 138
     const demoTime = getTime() * bpm / 60
 
+
     textFont('Londrina Solid')
     colorMode(HSL) // Hue (0..360), Saturation (0..100), Lightness (0..100)
 
+    //Clear background
+    background(0, 0, 0)
 
-    if (demoTime === 0) {
-        instructionsScene(demoTime)
+    //New tree every beat
+    //console.log(demoTime)
+    if ( demoTime - lastTreeSpawned > 1 ) {
+        const x = width * Math.random()
+        trees.push( new Tree(600, x, 400, 0) )
+        lastTreeSpawned = Math.floor(demoTime)
+    } 
 
-    } else if (demoTime < 4) {
-        stickScene(demoTime)
+    for( const tree of trees ) {
+        tree.y += 5
 
-    } else if (demoTime < 8) {
-        ballScene(demoTime)
+        tree.draw()
+    } 
 
-    } else if (demoTime < 12) {
-        stickScene(demoTime - 8)
+    trees = trees.slice(-10)
 
-    } else if (demoTime < 16) {
-        ballScene(demoTime)
+    // if (demoTime === 0) {
+    //     instructionsScene(demoTime)
 
-    } else if (demoTime < 24) {
-        stickScene(demoTime - 16)
+    // } else if (demoTime < 4) {
+    //     stickScene(demoTime)
 
-    } else if (demoTime < 32) {
-        ballScene(demoTime)
+    // } else if (demoTime < 8) {
+    //     ballScene(demoTime)
 
-    } else if (demoTime < 40) {
-        squareScene(demoTime - 32)
+    // } else if (demoTime < 12) {
+    //     stickScene(demoTime - 8)
 
-    } else if (demoTime < 48) {
-        noiseScene(demoTime)
+    // } else if (demoTime < 16) {
+    //     ballScene(demoTime)
 
-    } else if (demoTime < 56) {
-        squareScene(demoTime - 48)
+    // } else if (demoTime < 24) {
+    //     stickScene(demoTime - 16)
 
-    } else if (demoTime < 64) {
-        noiseScene(demoTime)
+    // } else if (demoTime < 32) {
+    //     ballScene(demoTime)
 
-    } else {
-        endDemo()
+    // } else if (demoTime < 40) {
+    //     squareScene(demoTime - 32)
 
-    }
+    // } else if (demoTime < 48) {
+    //     noiseScene(demoTime)
+
+    // } else if (demoTime < 56) {
+    //     squareScene(demoTime - 48)
+
+    // } else if (demoTime < 64) {
+    //     noiseScene(demoTime)
+
+    // } else {
+    //     endDemo()
+
+    // }
 }
 
 

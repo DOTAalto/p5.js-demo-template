@@ -4,6 +4,14 @@ let scalar = 70;
 let diameter;
 let angle = 0;
 
+function setup() {
+  const app = createCanvas(1920, 1080)
+  app.canvas.style = '' // Remove default scaling
+  app.parent(document.body)
+
+  background(0)
+  noLoop()
+}
 
 function setup() {
   createCanvas(1980, 1080);
