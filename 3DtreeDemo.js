@@ -1,5 +1,7 @@
 
 let trees = [];
+let trees2 = [];
+
 let speed = 2;
 let angle = 0;
 let radius = 500;
@@ -10,11 +12,12 @@ function setup() {
     let x = random(-2000, 2000);
     let z = random(-5000, 0);
     trees.push(createVector(x, 0, z));
+    trees2.push(new Tree( x, 0, z))
   }
 }
 
 function draw() {
-  background(135, 206, 235); // Sky blue
+  background(20, 20, 40); // Sky blue
   noStroke();
   
   // Ground
@@ -36,11 +39,15 @@ function draw() {
   camera(camX, 0, camZ, 0, 0, camZ - 500, 0, 1, 0);
 
   // Draw trees
-  for (let tree of trees) {
-    push();
-    translate(tree.x, tree.y, tree.z);
-    drawTree();
-    pop();
+  // for (let tree of trees) {
+  //   push();
+  //   translate(tree.x, tree.y, tree.z);
+  //   drawTree();
+  //   pop();
+  // }
+
+  for (const tree of trees2) {
+    tree.draw()
   }
 }
 
