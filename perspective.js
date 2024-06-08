@@ -1,5 +1,5 @@
 /*
- * To see the contents of thiis scene change the .js source file in index.html
+ * To see the contents of this scene change the .js source file in index.html
  */
 audioPlayer = document.querySelector('#song')
 
@@ -14,11 +14,10 @@ function draw() {
     if (demoTime === 0) {
         instructionsScene(demoTime)
 
-    } else if (demoTime < 15) {
+    } else if (demoTime < 120) {
         stickScene(demoTime)
     } else {
         endDemo()
-
     }
 }
 
@@ -33,20 +32,20 @@ function instructionsScene(sceneTime) {
     text('Press F to go fullscreen and space to start', width/2, height/2)
 }
 
+
 function stickScene(sceneTime) {
-    background(35, 100, 50) // orange
+    background('black')
 
     translate(width/2, height/2) 
 
-    fill(0, 0, 0) // black
+    fill('white') // black
     noStroke()
     // https://www.w3schools.com/jsref/jsref_tofixed.asp
     text(sceneTime.toFixed(2), 0, 0)
 
-    stroke(0, 0, 0) // black
+    stroke('white') // black
     strokeWeight(10)
 
-    //camera(0, 0, 0);
     // https://p5js.org/reference/#/p5/rotate
     //rotate(sceneTime)
     const lenght = map(50, 0, 1, 0, 100)
@@ -55,11 +54,8 @@ function stickScene(sceneTime) {
     const vector2 = new p5.Vector(-300, 50, speed)
     line(0 - sceneTime * vector1.normalize().x * speed, 100 - sceneTime * vector1.normalize().y * speed, 0 - sceneTime * vector1.normalize().x * speed, 300 + sceneTime * vector1.normalize().y * speed)
     
-    
-
     stroke('white')
     line(0, 100, 0 + sceneTime * speed, 0, 300, 0 + sceneTime * speed)
     line(0 - sceneTime * vector2.normalize().x * speed, 100 - sceneTime * vector2.normalize().y * speed, 0 - sceneTime * vector2.normalize().x * speed, 300 + sceneTime * vector2.normalize().y * speed)
 
-    //circle(50, 50, 25)
 }
