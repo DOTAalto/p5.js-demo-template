@@ -3,6 +3,14 @@
  */
 audioPlayer = document.querySelector('#song')
 
+function setup() {
+    const app = createCanvas(1920, 1080)
+    app.canvas.style = '' // Remove default scaling
+    app.parent(document.body)
+
+    background(0)
+    noLoop()
+}
 
 function draw() {
     const bpm = 132
